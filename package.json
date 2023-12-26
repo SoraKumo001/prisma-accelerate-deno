@@ -7,9 +7,9 @@
   "dependencies": {
     "@prisma/adapter-pg": "5.8.0-dev.41",
     "@prisma/client": "5.8.0-dev.41",
-    "fastify": "^4.25.1",
+    "fastify": "^4.25.2",
     "pg": "^8.11.3",
-    "prisma-accelerate-local": "^0.1.6"
+    "prisma-accelerate-local": "^0.1.9"
   },
   "devDependencies": {
     "@types/pg": "^8.10.9",

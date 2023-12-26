@@ -4,27 +4,29 @@ import pg from "npm:pg";
 import {
   PrismaAccelerate,
   ResultError,
-} from "npm:prisma-accelerate-local@0.1.8";
+} from "npm:prisma-accelerate-local@0.1.9";
 
 const queryEngineWasmFileBytes = fetch(
   new URL(
     "../../node_modules/@prisma/client/runtime/query-engine.wasm",
     import.meta.url
   )
-)
-  .then((r) => r.arrayBuffer())
-  .catch(() =>
-    fetch(
-      new URL(
-        "https://esm.sh/@prisma/client@5.8.0-dev.41/runtime/query-engine.wasm"
-      )
-    ).then((r) => r.arrayBuffer())
-  );
+).then((r) => r.arrayBuffer());
+
+const getAdapter = (datasourceUrl: string) => {
+  const url = new URL(datasourceUrl);
+  const schema = url.searchParams.get("schema");
+  const pool = new pg.Pool({
+    connectionString: url.toString(),
+  });
+  return new PrismaPg(pool, {
+    schema: schema ?? undefined,
+  });
+};
 
 export const createServer = ({
   datasourceUrl,
   apiKey,
-  wasm,
 }: {
   datasourceUrl: string;
   https?: { cert: string; key: string };
@@ -33,14 +35,12 @@ export const createServer = ({
 }) => {
   const prismaAccelerate = new PrismaAccelerate({
     apiKey,
-    wasm,
+    adapter: getAdapter(datasourceUrl),
     getQueryEngineWasmModule: async () => {
       const result = new WebAssembly.Module(await queryEngineWasmFileBytes);
       return result;
     },
-    PrismaPg,
     getPrismaClient,
-    pg,
   });
 
   return Deno.serve(async (request) => {
