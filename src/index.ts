@@ -1,10 +1,10 @@
-import { PrismaPg } from "npm:@prisma/adapter-pg@5.8.0-dev.41";
-import { getPrismaClient } from "npm:@prisma/client@5.8.0-dev.41/runtime/library.js";
+import { PrismaPg } from "npm:@prisma/adapter-pg@5.8.0-dev.42";
+import { getPrismaClient } from "npm:@prisma/client@5.8.0-dev.42/runtime/library.js";
 import pg from "npm:pg";
 import {
   PrismaAccelerate,
   ResultError,
-} from "npm:prisma-accelerate-local@0.1.9";
+} from "npm:prisma-accelerate-local@0.2.0/lib";
 
 const queryEngineWasmFileBytes = fetch(
   new URL(
@@ -25,17 +25,14 @@ const getAdapter = (datasourceUrl: string) => {
 };
 
 export const createServer = ({
-  datasourceUrl,
-  apiKey,
+  secret,
 }: {
-  datasourceUrl: string;
   https?: { cert: string; key: string };
-  apiKey?: string;
-  wasm?: boolean;
+  secret: string;
 }) => {
   const prismaAccelerate = new PrismaAccelerate({
-    apiKey,
-    adapter: getAdapter(datasourceUrl),
+    secret,
+    adapter: (datasourceUrl) => getAdapter(datasourceUrl),
     getQueryEngineWasmModule: async () => {
       const result = new WebAssembly.Module(await queryEngineWasmFileBytes);
       return result;
@@ -115,7 +112,6 @@ export const createServer = ({
               body,
               hash,
               headers,
-              datasourceUrl,
             })
           );
       }
@@ -125,7 +121,5 @@ export const createServer = ({
 };
 
 createServer({
-  datasourceUrl: Deno.env.get("DATABASE_URL")!,
-  apiKey: Deno.env.get("API_KEY"),
-  wasm: true,
+  secret: Deno.env.get("SECRET")!,
 });

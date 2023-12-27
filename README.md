@@ -4,14 +4,28 @@ Sample of Prisma engine running in deno and behaving similarly to prisma-acceler
 
 ## Required settings on the deno-deploy side.
 
-- .env
+- Deno Settings/Environment Variables
 
 ```env
-DATABASE_URL="postgres://xxxxx"
+SECRET="SECRET"
+```
+
+## Create API key
+
+npx prisma-accelerate-local -s SECRET -m DB_URL
+
+```bash
+npx prisma-accelerate-local -s abc -m postgres://postgres:xxxx@db.example.com:5432/postgres?schema=public
+```
+
 ```
 
 ## Client-side configuration
 
 ```
+
 DATABASE_URL="prisma://xxxx.deno.dev/?api_key=xxx"
+
+```
+
 ```

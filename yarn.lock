@@ -41,7 +41,7 @@
     "@prisma/driver-adapter-utils" "5.8.0-dev.41"
     postgres-array "3.0.2"
 
-"@prisma/adapter-pg@^5.8.0-dev.41":
+"@prisma/adapter-pg@^5.8.0-dev.42":
   version "5.8.0-integration-refactor-consistently-use-binarytarget-term.2"
   resolved "https://registry.yarnpkg.com/@prisma/adapter-pg/-/adapter-pg-5.8.0-integration-refactor-consistently-use-binarytarget-term.2.tgz#26e882bdf2ec39521000c542d0cf12cde0ef2a80"
   integrity sha512-bfCeCaSfOQBsrFOrwTuVwdAGYFCY/nIQ3kv4jvQWpaWGVknfEuSP77Ll5vfx99PZA4Vyx/cSKitwcAnmua0OHg==
@@ -54,7 +54,7 @@
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-5.8.0-dev.41.tgz#782141d04cf409fa5240cd6a1f68f3bd62519c24"
   integrity sha512-OhQ030EPaPW11IQ6PyzGyGUwhA1ttoBn97lVCBkPRfykUjpuITQl08uCUUBv7Sd2uTCHhG8ALvzFBYIpU97mbw==
 
-"@prisma/client@^5.8.0-dev.41":
+"@prisma/client@^5.8.0-dev.42":
   version "5.8.0-integration-refactor-consistently-use-binarytarget-term.2"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-5.8.0-integration-refactor-consistently-use-binarytarget-term.2.tgz#d6f6bdbb8126730fe89cf25d1964296dd9ec52db"
   integrity sha512-xZLkwkNgsIhO15CiaJ4cWfeIttfzgkcZHzVD4cGQF/YqY6Z0+9uzimgWrn18FdQQg1clgmzw7P2TwGpwunuapA==
@@ -347,6 +347,11 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
+jose@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-5.2.0.tgz#d0ffd7f7e31253f633eefb190a930cd14a916995"
+  integrity sha512-oW3PCnvyrcm1HMvGTzqjxxfnEs9EoFOFWi2HsEGhlFVOXxTE3K9GKWVMFoFw06yPUqwpvEWic1BmtUZBI/tIjw==
+
 json-schema-ref-resolver@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/json-schema-ref-resolver/-/json-schema-ref-resolver-1.0.1.tgz#6586f483b76254784fc1d2120f717bdc9f0a99bf"
@@ -575,16 +580,17 @@ postgres-range@^1.1.1:
   resolved "https://registry.yarnpkg.com/postgres-range/-/postgres-range-1.1.3.tgz#9ccd7b01ca2789eb3c2e0888b3184225fa859f76"
   integrity sha512-VdlZoocy5lCP0c/t66xAfclglEapXPCIVhqqJRncYpvbCgImF0w67aPKfbqUMr72tO2k5q0TdTZwCLjPTI6C9g==
 
-prisma-accelerate-local@^0.1.9:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/prisma-accelerate-local/-/prisma-accelerate-local-0.1.9.tgz#842fdc2f228fb02da48166528d8005c6a73fb3f2"
-  integrity sha512-u+hJ62PQ8Cb/pXuQzO8fluNV3q5gl7VjSDIr0rn+7Y1rizAhjrSm2MSiMW+kodf1eo5nGT10Bt0GGhgoAIz6zg==
+prisma-accelerate-local@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/prisma-accelerate-local/-/prisma-accelerate-local-0.2.0.tgz#d1c8b9122823e7eaef8720be735e06b9c6b0b46d"
+  integrity sha512-aQl7WJzfvK9JrOTY0KbDhcbzF/TLtjwhYfODnwZXTRgF8XEDxc/2s+wV7kG16mVAK2X5JPMd8P6IRY2QWjtbIQ==
   dependencies:
     "@colors/colors" "^1.6.0"
-    "@prisma/adapter-pg" "^5.8.0-dev.41"
-    "@prisma/client" "^5.8.0-dev.41"
+    "@prisma/adapter-pg" "^5.8.0-dev.42"
+    "@prisma/client" "^5.8.0-dev.42"
     "@prisma/fetch-engine" "^5.7.1"
     fastify "^4.25.1"
+    jose "^5.2.0"
     minimist "^1.2.8"
     node-forge "^1.3.1"
     pg "^8.11.3"

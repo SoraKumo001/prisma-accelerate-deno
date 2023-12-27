@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "deno run --watch --allow-all --node-modules-dir=false src/index.ts",
     "deploy": "next-exec deployctl deploy --project prisma-accelerate-deno --include=./src --prod",
+    "secret": "next-exec -- prisma-accelerate-local -s %SECRET% -m %DATABASE_URL%",
     "build": "tsc"
   },
   "dependencies": {
@@ -9,7 +10,7 @@
     "@prisma/client": "5.8.0-dev.41",
     "fastify": "^4.25.2",
     "pg": "^8.11.3",
-    "prisma-accelerate-local": "^0.1.9"
+    "prisma-accelerate-local": "^0.2.0"
   },
   "devDependencies": {
     "@types/pg": "^8.10.9",

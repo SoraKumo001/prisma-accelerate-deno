@@ -3,9 +3,12 @@
   "packages": {
     "specifiers": {
       "npm:@prisma/adapter-pg@5.8.0-dev.41": "npm:@prisma/adapter-pg@5.8.0-dev.41_pg@8.11.3",
+      "npm:@prisma/adapter-pg@5.8.0-dev.42": "npm:@prisma/adapter-pg@5.8.0-dev.42_pg@8.11.3",
       "npm:@prisma/client@5.8.0-dev.41": "npm:@prisma/client@5.8.0-dev.41",
+      "npm:@prisma/client@5.8.0-dev.42": "npm:@prisma/client@5.8.0-dev.42",
       "npm:pg": "npm:pg@8.11.3",
-      "npm:prisma-accelerate-local@0.1.9": "npm:prisma-accelerate-local@0.1.9_pg@8.11.3"
+      "npm:prisma-accelerate-local@0.1.9": "npm:prisma-accelerate-local@0.1.9_pg@8.11.3",
+      "npm:prisma-accelerate-local@0.2.0": "npm:prisma-accelerate-local@0.2.0_pg@8.11.3"
     },
     "npm": {
       "@colors/colors@1.6.0": {
@@ -42,8 +45,20 @@
           "postgres-array": "postgres-array@3.0.2"
         }
       },
+      "@prisma/adapter-pg@5.8.0-dev.42_pg@8.11.3": {
+        "integrity": "sha512-/6evqq8llhX5ljlGL+UVzHoauCaxTAph2UbXbBIKOrKH4wWLiD5Qzrd9XtkXjh1mRp0HCS6+nve7TFnPoqtu+g==",
+        "dependencies": {
+          "@prisma/driver-adapter-utils": "@prisma/driver-adapter-utils@5.8.0-dev.42",
+          "pg": "pg@8.11.3",
+          "postgres-array": "postgres-array@3.0.2"
+        }
+      },
       "@prisma/client@5.8.0-dev.41": {
         "integrity": "sha512-OhQ030EPaPW11IQ6PyzGyGUwhA1ttoBn97lVCBkPRfykUjpuITQl08uCUUBv7Sd2uTCHhG8ALvzFBYIpU97mbw==",
+        "dependencies": {}
+      },
+      "@prisma/client@5.8.0-dev.42": {
+        "integrity": "sha512-t6byuIPrpCHuRXWMxP821T4Nztz17n8r1rGTvC14IwMhCVeeWRMijzhS5J/7BOlirxgD0XmgfIskFwln5aCtaQ==",
         "dependencies": {}
       },
       "@prisma/debug@5.7.1": {
@@ -52,6 +67,12 @@
       },
       "@prisma/driver-adapter-utils@5.8.0-dev.41": {
         "integrity": "sha512-V+wV34foAhmPqaE0zh5aAaRsH2mr2Ir3GGJCPAaWBCPv4N1I7SnAhlUdSR04iQWKyQy+ahkosiYIdlt9wJ9xDw==",
+        "dependencies": {
+          "debug": "debug@4.3.4"
+        }
+      },
+      "@prisma/driver-adapter-utils@5.8.0-dev.42": {
+        "integrity": "sha512-VXllOkV3nNkBcdJIIgs7WUgWPC3zA3e8ymKsOiRl/8PEOULSjIm7NjJdVKmNs6En8nBhfzI5f0NiXiSl3K+1tw==",
         "dependencies": {
           "debug": "debug@4.3.4"
         }
@@ -233,6 +254,10 @@
         "integrity": "sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==",
         "dependencies": {}
       },
+      "jose@5.2.0": {
+        "integrity": "sha512-oW3PCnvyrcm1HMvGTzqjxxfnEs9EoFOFWi2HsEGhlFVOXxTE3K9GKWVMFoFw06yPUqwpvEWic1BmtUZBI/tIjw==",
+        "dependencies": {}
+      },
       "json-schema-ref-resolver@1.0.1": {
         "integrity": "sha512-EJAj1pgHc1hxF6vo2Z3s69fMjO1INq6eGHXZ8Z6wCQeldCuwxGK9Sxf4/cScGn3FZubCVUehfWtcDM/PLteCQw==",
         "dependencies": {
@@ -385,6 +410,20 @@
           "@prisma/client": "@prisma/client@5.8.0-dev.41",
           "@prisma/fetch-engine": "@prisma/fetch-engine@5.7.1",
           "fastify": "fastify@4.25.2",
+          "minimist": "minimist@1.2.8",
+          "node-forge": "node-forge@1.3.1",
+          "pg": "pg@8.11.3"
+        }
+      },
+      "prisma-accelerate-local@0.2.0_pg@8.11.3": {
+        "integrity": "sha512-aQl7WJzfvK9JrOTY0KbDhcbzF/TLtjwhYfODnwZXTRgF8XEDxc/2s+wV7kG16mVAK2X5JPMd8P6IRY2QWjtbIQ==",
+        "dependencies": {
+          "@colors/colors": "@colors/colors@1.6.0",
+          "@prisma/adapter-pg": "@prisma/adapter-pg@5.8.0-dev.42_pg@8.11.3",
+          "@prisma/client": "@prisma/client@5.8.0-dev.42",
+          "@prisma/fetch-engine": "@prisma/fetch-engine@5.7.1",
+          "fastify": "fastify@4.25.2",
+          "jose": "jose@5.2.0",
           "minimist": "minimist@1.2.8",
           "node-forge": "node-forge@1.3.1",
           "pg": "pg@8.11.3"
