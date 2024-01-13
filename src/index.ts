@@ -1,5 +1,5 @@
-import { PrismaPg } from "npm:@prisma/adapter-pg@5.8.0-dev.42";
-import { getPrismaClient } from "npm:@prisma/client@5.8.0-dev.42/runtime/library.js";
+import { PrismaPg } from "npm:@prisma/adapter-pg@5.8.0";
+import { getPrismaClient } from "npm:@prisma/client@5.8.0/runtime/library.js";
 import pg from "npm:pg";
 import {
   PrismaAccelerate,

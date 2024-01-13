@@ -2,8 +2,10 @@
   "version": "3",
   "packages": {
     "specifiers": {
+      "npm:@prisma/adapter-pg@5.8.0": "npm:@prisma/adapter-pg@5.8.0_pg@8.11.3",
       "npm:@prisma/adapter-pg@5.8.0-dev.41": "npm:@prisma/adapter-pg@5.8.0-dev.41_pg@8.11.3",
       "npm:@prisma/adapter-pg@5.8.0-dev.42": "npm:@prisma/adapter-pg@5.8.0-dev.42_pg@8.11.3",
+      "npm:@prisma/client@5.8.0": "npm:@prisma/client@5.8.0",
       "npm:@prisma/client@5.8.0-dev.41": "npm:@prisma/client@5.8.0-dev.41",
       "npm:@prisma/client@5.8.0-dev.42": "npm:@prisma/client@5.8.0-dev.42",
       "npm:pg": "npm:pg@8.11.3",
@@ -53,6 +55,18 @@
           "postgres-array": "postgres-array@3.0.2"
         }
       },
+      "@prisma/adapter-pg@5.8.0_pg@8.11.3": {
+        "integrity": "sha512-1mgJGpTvYygdC5fDTjbfLV+gMIugUPLL5FgHD+EEdEqC31vlbxY1Ao4GEMMjeAcR3/IIbbN01B+621tgGwo3Zw==",
+        "dependencies": {
+          "@prisma/driver-adapter-utils": "@prisma/driver-adapter-utils@5.8.0",
+          "pg": "pg@8.11.3",
+          "postgres-array": "postgres-array@3.0.2"
+        }
+      },
+      "@prisma/client@5.8.0": {
+        "integrity": "sha512-QxO6C4MaA/ysTIbC+EcAH1aX/YkpymhXtO6zPdk+FvA7+59tNibIYpd+7koPdViLg2iKES4ojsxWNUGNJaEcbA==",
+        "dependencies": {}
+      },
       "@prisma/client@5.8.0-dev.41": {
         "integrity": "sha512-OhQ030EPaPW11IQ6PyzGyGUwhA1ttoBn97lVCBkPRfykUjpuITQl08uCUUBv7Sd2uTCHhG8ALvzFBYIpU97mbw==",
         "dependencies": {}
@@ -64,6 +78,12 @@
       "@prisma/debug@5.7.1": {
         "integrity": "sha512-yrVSO/YZOxdeIxcBtZ5BaNqUfPrZkNsAKQIQg36cJKMxj/VYK3Vk5jMKkI+gQLl0KReo1YvX8GWKfV788SELjw==",
         "dependencies": {}
+      },
+      "@prisma/driver-adapter-utils@5.8.0": {
+        "integrity": "sha512-DVeDVgsXU1IEggYBpd53knz8jHuCX6DglstcE1dEmWZ+sV2lvt+hiWZo+YakG3Za/ET5Wrd8TOsCOYiAwfz93A==",
+        "dependencies": {
+          "debug": "debug@4.3.4"
+        }
       },
       "@prisma/driver-adapter-utils@5.8.0-dev.41": {
         "integrity": "sha512-V+wV34foAhmPqaE0zh5aAaRsH2mr2Ir3GGJCPAaWBCPv4N1I7SnAhlUdSR04iQWKyQy+ahkosiYIdlt9wJ9xDw==",
