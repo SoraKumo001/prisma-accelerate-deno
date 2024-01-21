@@ -6,12 +6,21 @@ import {
   ResultError,
 } from "npm:prisma-accelerate-local@0.2.0/lib";
 
-const queryEngineWasmFileBytes = fetch(
-  new URL(
-    "../../node_modules/@prisma/client/runtime/query-engine.wasm",
-    import.meta.url
+const queryEngineWasmFileBytes: Promise<ArrayBuffer> = (async () =>
+  (await fetch(
+    new URL(
+      "../../node_modules/@prisma/client/runtime/query-engine.wasm",
+      import.meta.url
+    )
   )
-).then((r) => r.arrayBuffer());
+    .then((r) => r.arrayBuffer())
+    .catch(() => undefined)) ??
+  (await fetch(
+    new URL(
+      "../node_modules/@prisma/client/runtime/query-engine.wasm",
+      import.meta.url
+    )
+  ).then((r) => r.arrayBuffer())))();
 
 const getAdapter = (datasourceUrl: string) => {
   const url = new URL(datasourceUrl);
