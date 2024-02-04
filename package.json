@@ -5,14 +5,14 @@
     "secret": "next-exec -- prisma-accelerate-local -s %SECRET% -m %DATABASE_URL%"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "5.8.1",
-    "@prisma/client": "5.9.0-dev.21",
-    "fastify": "^4.25.2",
+    "@prisma/adapter-pg": "5.9.1",
+    "@prisma/client": "5.9.1",
+    "fastify": "^4.26.0",
     "pg": "^8.11.3",
-    "prisma-accelerate-local": "^0.2.7"
+    "prisma-accelerate-local": "^0.3.1"
   },
   "devDependencies": {
-    "@types/pg": "^8.10.9",
+    "@types/pg": "^8.11.0",
     "next-exec": "^1.0.0"
   }
 }

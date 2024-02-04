@@ -1,10 +1,11 @@
-import { PrismaPg } from "npm:@prisma/adapter-pg@5.8.1";
-import { getPrismaClient } from "npm:@prisma/client@5.8.1/runtime/library.js";
+import { PrismaPg } from "npm:@prisma/adapter-pg";
+import { getPrismaClient } from "npm:@prisma/client/runtime/library.js";
 import pg from "npm:pg";
+
 import {
   PrismaAccelerate,
   ResultError,
-} from "npm:prisma-accelerate-local@0.2.7/lib";
+} from "npm:prisma-accelerate-local@0.3.1/lib";
 
 const queryEngineWasmFileBytes: Promise<ArrayBuffer> = (async () =>
   (await fetch(
