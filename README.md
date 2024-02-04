@@ -18,14 +18,8 @@ npx prisma-accelerate-local -s SECRET -m DB_URL
 npx prisma-accelerate-local -s abc -m postgres://postgres:xxxx@db.example.com:5432/postgres?schema=public
 ```
 
-```
-
 ## Client-side configuration
 
 ```
-
 DATABASE_URL="prisma://xxxx.deno.dev/?api_key=xxx"
-
-```
-
 ```
