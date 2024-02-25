@@ -2,17 +2,30 @@
   "scripts": {
     "dev": "deno run --watch --allow-all --node-modules-dir=false src/index.ts",
     "deploy": "next-exec deployctl deploy --project prisma-accelerate-deno --include=./src --prod",
-    "secret": "next-exec -- prisma-accelerate-local -s %SECRET% -m %DATABASE_URL%"
+    "secret": "next-exec -- prisma-accelerate-local -s %SECRET% -m %DATABASE_URL%",
+    "test:prisma:migrate": "next-exec -c test -- yarn prisma migrate dev --schema=test/prisma/schema.prisma",
+    "test:prisma:generate": "yarn prisma generate --schema=test/prisma/schema.prisma --no-engine",
+    "test:docker": "docker compose -p prisma-accelerate-local -f test/docker/docker-compose.yml up -d",
+    "test:reset": "yarn prisma:reset",
+    "test": "next-exec -c test -- jest --coverage"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "5.9.1",
-    "@prisma/client": "5.9.1",
-    "fastify": "^4.26.0",
+    "@prisma/adapter-pg": "5.10.2",
+    "@prisma/client": "5.10.2",
     "pg": "^8.11.3",
-    "prisma-accelerate-local": "^0.3.1"
+    "prisma-accelerate-local": "^1.1.0"
   },
   "devDependencies": {
-    "@types/pg": "^8.11.0",
-    "next-exec": "^1.0.0"
+    "@types/jest": "^29.5.12",
+    "@types/pg": "^8.11.1",
+    "jest": "^29.7.0",
+    "jest-async": "^1.0.6",
+    "next-exec": "^1.0.0",
+    "prisma": "^5.10.2",
+    "ts-jest": "^29.1.2",
+    "ts-jest-resolver": "^2.0.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.3.3"
   }
 }

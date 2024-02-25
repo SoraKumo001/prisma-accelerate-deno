@@ -1,26 +1,24 @@
 import { PrismaPg } from "npm:@prisma/adapter-pg";
 import { getPrismaClient } from "npm:@prisma/client/runtime/library.js";
 import pg from "npm:pg";
-
 import {
   PrismaAccelerate,
   ResultError,
-} from "npm:prisma-accelerate-local@0.3.1/lib";
+} from "npm:prisma-accelerate-local@1.1.0/lib";
+import runtime from "npm:@prisma/client/runtime/query_engine_bg.postgresql.js";
 
+const engine = "query_engine_bg.postgresql.wasm";
 const queryEngineWasmFileBytes: Promise<ArrayBuffer> = (async () =>
   (await fetch(
     new URL(
-      "../../node_modules/@prisma/client/runtime/query-engine.wasm",
+      `../../node_modules/@prisma/client/runtime/${engine}`,
       import.meta.url
     )
   )
     .then((r) => r.arrayBuffer())
     .catch(() => undefined)) ??
   (await fetch(
-    new URL(
-      "../node_modules/@prisma/client/runtime/query-engine.wasm",
-      import.meta.url
-    )
+    new URL(`../node_modules/@prisma/client/runtime/${engine}`, import.meta.url)
   ).then((r) => r.arrayBuffer())))();
 
 const getAdapter = (datasourceUrl: string) => {
@@ -43,11 +41,10 @@ export const createServer = ({
   const prismaAccelerate = new PrismaAccelerate({
     secret,
     adapter: (datasourceUrl) => getAdapter(datasourceUrl),
-    getQueryEngineWasmModule: async () => {
-      const result = new WebAssembly.Module(await queryEngineWasmFileBytes);
-      return result;
-    },
-    getPrismaClient,
+    getQueryEngineWasmModule: async () =>
+      new WebAssembly.Module(await queryEngineWasmFileBytes),
+    getRuntime: () => runtime,
+    getPrismaClient: getPrismaClient,
   });
 
   return Deno.serve(async (request) => {
@@ -55,8 +52,8 @@ export const createServer = ({
     const paths = url.pathname.split("/");
     const [_, version, hash, command] = paths;
     const headers = Object.fromEntries(request.headers.entries());
-    const createResponse = (result: Promise<unknown>) =>
-      result
+    const createResponse = (result: Promise<unknown>) => {
+      const response = result
         .then((r) => {
           return new Response(JSON.stringify(r), {
             headers: { "content-type": "application/json" },
@@ -74,7 +71,8 @@ export const createServer = ({
             headers: { "content-type": "application/json" },
           });
         });
-
+      return response;
+    };
     if (request.method === "POST") {
       const body = await request.text();
       switch (command) {
