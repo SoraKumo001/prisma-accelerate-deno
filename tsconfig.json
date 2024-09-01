@@ -105,8 +105,7 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "baseUrl": ".",
-    "plugins": [{ "transform": "typescript-transform-paths" }]
+    "baseUrl": "."
   },
   "include": ["src"],
   "exclude": ["test", "node_modules"]

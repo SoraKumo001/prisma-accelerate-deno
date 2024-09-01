@@ -1,5 +1,5 @@
 import { PrismaPg } from "npm:@prisma/adapter-pg";
-import { getPrismaClient } from "npm:@prisma/client/runtime/library.js";
+import { getPrismaClient } from "npm:@prisma/client/runtime/wasm.js";
 import pg from "npm:pg";
 import { PrismaAccelerate, ResultError } from "npm:prisma-accelerate-local/lib";
 import runtime from "npm:@prisma/client/runtime/query_engine_bg.postgresql.js";
@@ -36,7 +36,6 @@ export const createServer = ({
   secret: string;
 }) => {
   const prismaAccelerate = new PrismaAccelerate({
-    activeProvider: "postgresql",
     secret,
     adapter: (datasourceUrl) => getAdapter(datasourceUrl),
     getQueryEngineWasmModule: async () =>
@@ -71,6 +70,7 @@ export const createServer = ({
         });
       return response;
     };
+
     if (request.method === "POST") {
       const body = await request.text();
       switch (command) {
