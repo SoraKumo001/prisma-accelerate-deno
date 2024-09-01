@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "deno run -r --watch --allow-all --node-modules-dir=false src/index.ts",
-    "deploy": "npxnext-exec deployctl deploy --project prisma-accelerate-deno --include=./src --prod",
+    "deploy": "next-exec deployctl deploy --project prisma-accelerate-deno --include=./src --prod",
     "secret": "next-exec -- prisma-accelerate-local -s %SECRET% -m %DATABASE_URL%",
     "test:prisma:migrate": "next-exec -c test -- yarn prisma migrate dev --schema=test/prisma/schema.prisma",
     "test:prisma:generate": "yarn prisma generate --schema=test/prisma/schema.prisma --no-engine",
@@ -25,6 +25,7 @@
     "ts-jest": "^29.2.5",
     "ts-jest-resolver": "^2.0.1",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.5.4"
   }
 }
