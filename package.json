@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "deno run -r --watch --allow-all --node-modules-dir=false src/index.ts",
+    "dev": "deno run --watch --allow-all src/index.ts",
     "deploy": "next-exec deployctl deploy --project prisma-accelerate-deno --include=./src --prod",
     "secret": "next-exec -- prisma-accelerate-local -s %SECRET% -m %DATABASE_URL%",
     "test:prisma:migrate": "next-exec -c test -- yarn prisma migrate dev --schema=test/prisma/schema.prisma",
@@ -10,22 +10,28 @@
     "test": "next-exec -c test -- jest --coverage"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "5.19.0",
-    "@prisma/client": "5.19.0",
-    "pg": "^8.12.0",
-    "prisma-accelerate-local": "^1.1.5"
+    "@prisma/adapter-pg": "5.20.0",
+    "@prisma/client": "5.20.0",
+    "pg": "^8.13.0",
+    "prisma-accelerate-local": "^1.1.12"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/pg": "^8.11.8",
+    "@types/jest": "^29.5.13",
+    "@types/pg": "^8.11.10",
     "jest": "^29.7.0",
     "jest-async": "^1.0.7",
     "next-exec": "^1.0.0",
-    "prisma": "^5.19.0",
+    "prisma": "^5.20.0",
     "ts-jest": "^29.2.5",
     "ts-jest-resolver": "^2.0.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.5.4"
-  }
+    "typescript": "^5.6.3"
+  },
+  "name": "prisma-accelerate-deno",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SoraKumo001/prisma-accelerate-deno",
+  "author": "SoraKumo <info@croud.jp>",
+  "license": "MIT"
 }
